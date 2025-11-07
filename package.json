@@ -1,0 +1,75 @@
+{
+    "name": "punctuation-auto-switch",
+    "displayName": "Punctuation Auto Switch",
+    "description": "自动将中文标点符号转换为对应的英文标点符号",
+    "version": "1.0.0",
+    "publisher": "veeblue",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/your-username/your-repo"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "punctuation",
+        "chinese",
+        "converter",
+        "标点符号",
+        "中文",
+        "转英文标点符号"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "punctuationConverter.toggle",
+                "title": "切换中文标点转换"
+            }
+        ],
+        "configuration": {
+            "title": "Chinese Punctuation Converter",
+            "properties": {
+                "punctuationConverter.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "启用自动转换功能"
+                },
+                "punctuationConverter.customMap": {
+                    "type": "object",
+                    "default": {},
+                    "description": "自定义标点符号映射",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "punctuationConverter.enabledLanguages": {
+                    "type": "array",
+                    "default": [],
+                    "description": "仅在指定的语言中启用（留空表示所有语言）",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.70.0",
+        "@types/node": "16.x",
+        "typescript": "^4.7.4"
+    },
+    "icon": "icon.png"
+}
